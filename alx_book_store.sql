@@ -13,7 +13,7 @@ mycursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
 
 mycursor.execute("""
   CREATE TABLE IF NOT EXISTS Books (
-    book_id PRIMARY KEY,
+    book_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(130),
     author_id FOREIGN KEY REFERENCES Authors(author_id),
     price DOUBLE,
@@ -23,14 +23,14 @@ mycursor.execute("""
 
 mycursor.execute("""
   CREATE TABLE IF NOT EXISTS Authors (
-    author_id PRIMARY KEY,
+    author_id INT AUTO_INCREMENT PRIMARY KEY,
     author_name VARCHAR(215)
   )
 """)
 
 mycursor.execute("""
   CREATE TABLE IF NOT EXISTS Customers (
-    customer_id PRIMARY KEY,
+    customer_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(215),
     email VARCHAR(215),
     address TEXT
@@ -39,7 +39,7 @@ mycursor.execute("""
 
 mycursor.execute("""
   CREATE TABLE IF NOT EXISTS Orders (
-    order_id PRIMARY KEY,
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id FOREIGN KEY REFERENCES Customers(customer_id),
     order_date DATE
   )
@@ -47,7 +47,7 @@ mycursor.execute("""
 
 mycursor.execute("""
   CREATE TABLE IF NOT EXISTS Orders_Details (
-    order_detail PRIMARY KEY,
+    order_detail INT AUTO_INCREMENT PRIMARY KEY,
     order_id FOREIGN KEY REFERENCES Orders(order_id),
     book_id FOREIGN KEY REFERENCES Books(book_id),
     quantity DOUBLE
