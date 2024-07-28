@@ -48,11 +48,12 @@ mycursor.execute("""
 mycursor.execute("""
   CREATE TABLE IF NOT EXISTS Orders_Details (
     order_detail INT AUTO_INCREMENT PRIMARY KEY,
-    order_id FOREIGN KEY REFERENCES Orders(order_id),
-    book_id FOREIGN KEY REFERENCES Books(book_id),
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (book_id) REFERENCES Books(book_id),
     quantity DOUBLE
   )
 """)
 
+mydb.commit()
 mycursor.close()
 mydb.close()
